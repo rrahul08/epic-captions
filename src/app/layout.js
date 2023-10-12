@@ -1,5 +1,7 @@
 import './globals.css'
+import SparklesIcon from "@/components/SparklesIcon";
 import { Inter } from 'next/font/google'
+import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +13,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + " bg-gradient-to-b from-bg-gradient-from to-bg-gradient-to min-h-screen text-white"}>
+        <main className="p-4 max-w-2xl mx-auto font-custom">
+          <header className="flex justify-between my-2 sm:my-8">
+            <Link href="/" className="flex gap-1">
+              <SparklesIcon />
+              <span className='text-custom-large '>Epic  Captions</span>
+            </Link>
+            <nav className="header-nav flex items-center gap-2 sm:gap-6 text-white/80 text-sm sm:text-bas ">
+              <Link href="/" className='text-custom-small'>Home</Link>
+              <Link href="/pricing" className='text-custom-small'>Pricing</Link>
+              <a href="mailto:contact@epiccaptions.com" className='text-custom-small'>Contact</a>
+            </nav>
+          </header>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
